@@ -1,0 +1,12 @@
+{
+    "name": "nicolascandelon/rotomod",
+    "authors": [
+        {
+            "name": "Linkweb-Tech",
+            "email": "technique@linkweb.fr"
+        }
+    ],
+    "require": {
+        "htmlburger/carbon-fields": "^3.1"
+    }
+}
