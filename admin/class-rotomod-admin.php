@@ -108,21 +108,30 @@ class Rotomod_Admin {
 
 	public function options_initialize_admin_page() {
 	
-		Container::make( 'theme_options', __( 'Options de livraisons & remises', 'rtm-plugin' ) )
+		Container::make( 'theme_options', __( 'Options de livraisons & remises' ) )
 			->add_fields(array(
 				Field::make('complex', 'rtm_periods', 'Périodes de promos')
-					->set_layout('tabbed-horizontal')
+					->set_layout('tabbed-vertical')
 					->add_fields(array(
 						Field::make('text', 'title', 'Titre'),
 						Field::make('date', 'date_begin', 'Date de début'),
 						Field::make('date', 'date_end', 'Date de fin')
+					))
+					))
+			->add_fields(array(
+				Field::make('complex', 'rtm_disount_by_sales', 'Remises en fonction du CA')
+					//->set_layout('tabbed-vertical')
+					->add_fields(array(
+						Field::make('text', 'rtm_min_sale_amount', 'Seuil minimum')->set_width(30),
+						Field::make('text', 'rtm_max_sale_amount', 'Seuil maximum')->set_width(30), 
+						Field::make('text', 'rtm_amount', 'Remise effectuée')->set_width(30)
 					))
 			))
 			->set_page_file( 'plugin-rotomod' )
 			->set_page_menu_title( __( 'Livraison & remises', 'rtm-plugin' ) )
 			->set_page_menu_position( 31 )
 			->set_icon( 'dashicons-shield' );
-		
+		Field::make('separator', 'crb_separator', __('Separator'));
 		
 
 	}
