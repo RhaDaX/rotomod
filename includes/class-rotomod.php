@@ -75,7 +75,7 @@ class Rotomod {
 		$this->plugin_name = 'rotomod';
 
 		$this->load_dependencies();
-		$this->set_locale();
+		$this->set_locale('fr_FR');
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
@@ -158,6 +158,7 @@ class Rotomod {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'carbon_fields_register_fields', $plugin_admin ,'options_initialize_admin_page' );
+		$this->loader->add_filter('gettext', $plugin_admin, 'translateCarbon', 20, 3);
 	}
 
 	/**

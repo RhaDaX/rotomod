@@ -111,13 +111,17 @@ class Rotomod_Admin {
 		Container::make( 'theme_options', __( 'Options de livraisons & remises' ) )
 			->add_fields(array(
 				Field::make('complex', 'rtm_periods', 'Périodes de promos')
-					->set_layout('tabbed-vertical')
+					->set_help_text(__('Ce texte d\'aide permet à l\'utilisateur de comprendre l\'intérêt de champ.', 'msk-plugin'))
+					->set_layout('grid')
 					->add_fields(array(
 						Field::make('text', 'title', 'Titre'),
-						Field::make('date', 'date_begin', 'Date de début'),
-						Field::make('date', 'date_end', 'Date de fin')
+						Field::make('date', 'date_begin', 'Date de début')->set_width(50),
+						Field::make('date', 'date_end', 'Date de fin')->set_width(50)
 					))
 					))
+			->add_fields(array(
+				Field::make('separator', 'crb_separator', __(''))
+			))
 			->add_fields(array(
 				Field::make('complex', 'rtm_disount_by_sales', 'Remises en fonction du CA')
 					//->set_layout('tabbed-vertical')
@@ -139,8 +143,24 @@ class Rotomod_Admin {
 	public function crb_load() {
 	$plugin_dir = ABSPATH . 'wp-content/plugins/rotomod/';
     require_once( $plugin_dir . 'vendor/autoload.php' );
-    \Carbon_Fields\Carbon_Fields::boot();
-}
+	\Carbon_Fields\Carbon_Fields::boot();
+	}
+
+	public function translateCarbon($translated_text){
 
 
+		switch ($translated_text) {
+
+			case 'Add Entry':
+
+				$translated_text = __('Ajouter un ligne', 'rotomod');
+				break;
+
+			
+		}
+		
+
+		return $translated_text;
+	}
+	
 }
