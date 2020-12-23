@@ -2,3 +2,43 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+
+.woocommerce ul#shipping_method li:nth-child(odd) {
+    background-color: #e9e8e8;
+
+}
+
+.woocommerce ul#shipping_method li {
+    padding: 10px 15px 10px 15px;
+}
+
+ul#shipping_method li input[checked="checked"] ~ .dateSelector {
+    display: block;
+    padding-top: 10px;
+}
+
+
+ul#shipping_method li input ~ .dateSelector {
+    display: none;
+}
+
+ul#shipping_method .shipping-method-description {
+    line-height: 12px;
+    font-weight: 900 !important;
+}
+
+ul#shipping_method li label {
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.dateSelector label[for="shipping_date"] {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    text-align: left;
+}
+
+.woocommerce-cart .shop_table .woocommerce-shipping-totals {
+    display: none;
+}
